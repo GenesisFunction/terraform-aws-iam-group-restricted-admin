@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "restricted_admin" {
+data "aws_iam_policy_document" "this" {
   statement {
     sid = "AllowFullAdminExceptSomeWithMFA"
     not_actions = [
@@ -28,6 +28,6 @@ data "aws_iam_policy_document" "restricted_admin" {
 resource "aws_iam_policy" "this" {
   name        = "${var.group_name}-policy"
   description = "Policy to grant restricted admin. This admin can't do some functions such as delete the CloudTrail audit trail."
-  policy      = data.aws_iam_policy_document.restricted_admin.json
+  policy      = data.aws_iam_policy_document.this.json
 }
 
