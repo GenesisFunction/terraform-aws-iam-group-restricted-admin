@@ -22,5 +22,5 @@ module "iam_group_restricted_admin" {
 ```
 
 ### Using different policies
-To use this as a template for a different set of permissions, change the policy document and description in iam-policy.tf
+To use this as a template for a different set of permissions, change the inputs, readme, and policy document/description in iam-policy.tf
 
