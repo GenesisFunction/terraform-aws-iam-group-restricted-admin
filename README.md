@@ -1,5 +1,5 @@
 # iam-group-restricted-admin
-iam-group-restricted-admin creates a group and associated policies/roles to be able to grant users a restricted admin policy (full admin minus deletion of logs, cloudtrail, etc.) in addition to user self service rights. The default policy requires MFA access for console, but not role assumption(though the role can be switched into), and requires role assumption for cli (only way to do MFA in cli).
+iam-group-restricted-admin creates a group and associated policies/roles to be able to grant users a restricted admin policy (full admin minus deletion of logs, cloudtrail, etc.) in addition to user self service rights. The default policy requires MFA access for console, but not role assumption(though the role can be switched into), and requires role assumption for cli (best way to do MFA in cli).
 
 This is meant to be used as a one and done solution for people with a single AWS account who want to have/enforce MFA access on their admins.
 
