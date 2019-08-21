@@ -1,5 +1,6 @@
 data "aws_iam_policy_document" "restricted_admin" {
   statement {
+    sid = "AllowFullAdminExceptSomeWithMFA"
     not_actions = [
       "logs:Delete*",
       "cloudtrail:Delete*",
@@ -13,40 +14,14 @@ data "aws_iam_policy_document" "restricted_admin" {
     resources = [
       "*",
     ]
-    
-    sid = "AllowFullAdminExceptSome"
   }
   statement {
+    sid = "AllowFullAdminExceptSomeS3WithMFA"
     not_actions = [
       "s3:Delete*",
       "s3:Put*",
     ]
     resources = var.s3_bucket_paths_to_protect
-    sid = "AllowFullAdminExceptSomeS3"
-  }
-  statement {
-    effect = "Deny"
-    not_actions = [
-      "iam:CreateVirtualMFADevice",
-      "iam:EnableMFADevice",
-      "iam:GetUser",
-      "iam:ListMFADevices",
-      "iam:ListVirtualMFADevices",
-      "iam:ResyncMFADevice",
-      "sts:GetSessionToken"
-    ]
-    resources = [
-      "*"
-    ]
-    condition {
-      test     = "BoolIfExists"
-      variable = "aws:MultiFactorAuthPresent"
-
-      values = [
-        "false"
-      ]
-    }
-    sid = "DenyAllExceptListedIfNoMFA"
   }
 }
 

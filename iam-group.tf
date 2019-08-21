@@ -9,7 +9,7 @@ resource "aws_iam_group_policy_attachment" "this" {
 }
 
 resource "aws_iam_group_policy" "role_assumption" {
-  name  = "${var.group_name}-policy"
+  name  = "${var.group_name}-role-assumption-policy"
   group = aws_iam_group.group.id
 
   policy = <<EOF
@@ -34,7 +34,7 @@ EOF
 }
 
 resource "aws_iam_group_policy" "user_self_service" {
-  name  = "${var.group_name}-policy"
+  name  = "${var.group_name}-user-self-service-policy"
   group = aws_iam_group.group.id
 
   policy = <<EOF
@@ -91,6 +91,25 @@ resource "aws_iam_group_policy" "user_self_service" {
         "arn:aws:iam::*:mfa/$${aws:username}"
       ],
       "Condition": {"BoolIfExists": {"aws:MultiFactorAuthPresent": true}}
+    },
+    {
+      "Sid": "DenyAllExceptListedIfNoMFA",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:ListVirtualMFADevices",
+        "iam:List*",
+        "iam:GetUser",
+        "iam:GetAccountPasswordPolicy",
+        "iam:EnableMFADevice",
+        "iam:CreateVirtualMFADevice",
+        "iam:ChangePassword"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "BoolIfExists": {
+          "aws:MultiFactorAuthPresent": "false"
+        }
+      }
     }
   ]
 }
