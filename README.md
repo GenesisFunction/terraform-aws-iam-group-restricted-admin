@@ -7,7 +7,7 @@ This is meant to be used as a one and done solution for people with a single AWS
 ```
 module "iam_group_restricted_admin" {
   source  = "GenesisFunction/iam-group-restricted-admin/aws"
-  version = "1.0.1"
+  version = "1.0.2"
   # source  = "github.com/GenesisFunction/terraform-aws-iam-group-restricted-admin"
 
   group_name = "${name_prefix}-restricted-admin"
