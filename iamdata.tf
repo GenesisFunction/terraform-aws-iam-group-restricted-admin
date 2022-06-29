@@ -150,7 +150,7 @@ data "aws_iam_policy_document" "user_self_service_policy" {
   statement {
     sid = "DenyAllExceptListedIfNoMFA"
 
-    actions = [
+    not_actions = [
         "iam:ListVirtualMFADevices",
         "iam:List*",
         "iam:GetUser",
