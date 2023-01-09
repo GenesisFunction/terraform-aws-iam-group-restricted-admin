@@ -12,12 +12,12 @@ resource "aws_iam_group_policy" "role_assumption" {
   name  = "${var.group_name}-role-assumption-policy"
   group = aws_iam_group.group.id
 
-  policy = data.aws_iam_policy_document.role_assumption
+  policy = data.aws_iam_policy_document.role_assumption.json
 }
 
 resource "aws_iam_group_policy" "user_self_service" {
   name  = "${var.group_name}-user-self-service-policy"
   group = aws_iam_group.group.id
 
-  policy = data.aws_iam_policy_document.user_self_service_policy
+  policy = data.aws_iam_policy_document.user_self_service_policy.json
 }
