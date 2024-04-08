@@ -1,3 +1,5 @@
+header-from: ./.config/header.md
+
 version: ""
 
 formatter: markdown table
@@ -5,6 +7,8 @@ formatter: markdown table
 name: terraform-aws-iam-group-restricted-admin
 
 content: |-
+  {{ .Header }}
+
   # terraform-aws-iam-group-restricted-admin
 
   GitHub: [StratusGrid/terraform-aws-iam-group-restricted-admin](https://github.com/StratusGrid/terraform-aws-iam-group-restricted-admin)
@@ -39,6 +43,7 @@ content: |-
 
 sections:
   show:
+    - header
     - resources
     - inputs
     - outputs

@@ -1,9 +1,20 @@
 <!-- BEGIN_TF_DOCS -->
+<p align="center">                                                                                                                                            
+                                                                                
+  <img src="https://github.com/StratusGrid/terraform-readme-template/blob/main/header/stratusgrid-logo-smaller.jpg?raw=true" />
+  <p align="center">
+    <a href="https://stratusgrid.com/book-a-consultation">Contact Us Test</a>
+    <a href="https://stratusgrid.com/cloud-cost-optimization-dashboard">Stratusphere FinOps</a>
+    <a href="https://stratusgrid.com">StratusGrid Home</a>
+    <a href="https://stratusgrid.com/blog">Blog</a>
+  </p>
+</p>
+
 # terraform-aws-iam-group-restricted-admin
 
 GitHub: [StratusGrid/terraform-aws-iam-group-restricted-admin](https://github.com/StratusGrid/terraform-aws-iam-group-restricted-admin)
 
-This module creates a group and associated policies/roles to be able to grant users a restricted admin policy (full admin minus deletion of logs, cloudtrail, etc.) in addition to user self service rights.
+This module creates a group and associated policies/roles to be able to grant users a restricted admin policy (full admin minus deletion of logs, cloudtrail, etc.) in addition to user self service rights. 
 The default policy requires MFA access for console, but not role assumption (though the role can be switched into), and requires role assumption for cli (best way to do MFA in cli).
 
 This is meant to be used as a one and done solution for people with a single AWS account who want to have/enforce MFA access on their admins.
